@@ -8,7 +8,7 @@ An enterprise player/game management system for chess clubs. Includes rating cal
 Where:
 * Experience Constant =
   * 40 for the first 20 games played, or
-  * 20 for all games after the $` \text{$20^{th}$}`$ game played
+  * 20 for all games after the $` \text{$20^{\text{th}}$}`$ game played
 * Expected Score = $` \frac{1}{1 + 10^{\frac{\text{Opponent's Rating} - \text{Player's Rating}}{400}}} `$
 * Match Score =
   * 1 if the player won the game, or
