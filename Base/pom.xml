@@ -8,6 +8,11 @@
     <artifactId>Base</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
+    <modules>
+        <module>chessclub-ear</module>
+        <module>chessclub-ejb</module>
+        <module>chessclub-web</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
