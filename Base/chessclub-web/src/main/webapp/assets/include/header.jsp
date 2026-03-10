@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>ChessClub Web<% if(pageTitle != null) { %>: <%= pageTitle %> <% } %></title>
-    <link rel="stylesheet" href="assets/style/main.css">
+    <link rel="stylesheet" href="/chessclub/assets/style/main.css">
   </head>
   <body>
     <header>
