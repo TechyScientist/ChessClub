@@ -55,7 +55,7 @@ public class UserDaoImpl implements UserDao {
     public List<User> getUsersExcept(int id) {
         try {
             return (List<User>)(manager.createNamedQuery("User.FindAllExcept")
-                    .setParameter("username", id)
+                    .setParameter("id", id)
                     .getResultList());
         } catch(Exception e) {
             return null;
