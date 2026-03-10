@@ -29,6 +29,19 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>chessclub-ejb</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>chessclub-web</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+                <scope>compile</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -71,5 +84,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
