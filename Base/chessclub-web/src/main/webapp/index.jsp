@@ -1,8 +1,8 @@
-<html>
-    <head>
-        <title>ChessClub Web</title>
-    </head>
-    <body>
+<%
+    // Metadata strings for dynamic UI lementw
+    String pageName = "home",
+            pageTitle = null;
+%>
+<%@ include file="assets/include/header.jsp" %>
 
-    </body>
-</html>
+<%@ include file="assets/include/footer.jsp" %>
