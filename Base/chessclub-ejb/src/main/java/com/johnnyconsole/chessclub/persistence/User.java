@@ -1,7 +1,5 @@
 package com.johnnyconsole.chessclub.persistence;
 
-import jdk.jfr.Name;
-
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.sql.Date;
@@ -20,19 +18,25 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     public int id;
-    public String lastName, firstName, username;
+    public String lastName, firstName, username, CFCID, FIDEID, chesscomUsername;
     @JsonbTransient private String password;
     public int rating, gamesPlayed;
     public Date effectiveDate;
     public boolean isArbiter, isOrganizer, isAdministrator;
 
+    public User() {}
+
     public User(String lastName, String firstName, String username,
-                String password, int rating, int gamesPlayed, Date effectiveDate,
+                String password, String CFCID, String FIDEID, String chesscomUsername,
+                int rating, int gamesPlayed, Date effectiveDate,
                 boolean isArbiter, boolean isOrganizer, boolean isAdministrator) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.username = username;
         this.password = password;
+        this.CFCID = CFCID;
+        this.FIDEID = FIDEID;
+        this.chesscomUsername = chesscomUsername;
         this.rating = rating;
         this.gamesPlayed = gamesPlayed;
         this.effectiveDate = effectiveDate;
@@ -42,8 +46,9 @@ public class User {
     }
 
     public User(String lastName, String firstName, String username, String password) {
-        this(lastName, firstName, username, password, 1200, 0,
-                Date.valueOf(LocalDate.now()), false, false, false);
+        this(lastName, firstName, username, password, null, null, null,
+                1200, 0, Date.valueOf(LocalDate.now()), false,
+                false, false);
     }
 
     public String getDisplayId() {
@@ -58,6 +63,26 @@ public class User {
     @JsonbTransient
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    //TODO: Remove this method -- used only for testing
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append("User {\n\tid: ").append(getDisplayId())
+                .append("\n\tlastName: ").append(lastName)
+                .append("\n\tfirstName: ").append(firstName)
+                .append("\n\tusername: ").append(username)
+                .append("\n\tCFCID: ").append(CFCID)
+                .append("\n\tFIDEID: ").append(FIDEID)
+                .append("\n\tchesscomUsername: ").append(chesscomUsername)
+                .append("\n\trating: ").append(rating)
+                .append("\n\tgamesPlayed: ").append(gamesPlayed)
+                .append("\n\teffectiveDate: ").append(effectiveDate)
+                .append("\n\tisArbiter: ").append(isArbiter ? "Yes": "No")
+                .append("\n\tisOrganizer: ").append(isOrganizer ? "Yes": "No")
+                .append("\n\tisAdministrator: ").append(isAdministrator ? "Yes": "No")
+                .append("\n}").toString();
     }
 
 }
