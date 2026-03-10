@@ -28,10 +28,9 @@ h3 {
 }
 
 a {
-    display: block;
+    display: inline-block;
     width: fit-content;
     color: black;
-    margin-bottom: 10px;
 }
 
 form {
@@ -87,7 +86,6 @@ nav {
 }
 
 nav a {
-    display: inline-block;
     text-decoration: none;
     padding: 10px;
     margin-right: 5px;
