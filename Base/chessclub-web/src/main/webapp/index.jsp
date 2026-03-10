@@ -1,5 +1,5 @@
 <%
-    // Metadata strings for dynamic UI lementw
+    // Metadata strings for dynamic UI elements
     String pageName = "home",
             pageTitle = null;
 %>
