@@ -63,6 +63,19 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List<User> getUsers(int limit, int page) {
+        try {
+            return (List<User>) (manager.createNamedQuery("User.FindAll")
+                    .setMaxResults(limit)
+                    .setFirstResult((page - 1) * limit)
+                    .getResultList());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public boolean addUser(User user) {
         try {
             manager.persist(user);

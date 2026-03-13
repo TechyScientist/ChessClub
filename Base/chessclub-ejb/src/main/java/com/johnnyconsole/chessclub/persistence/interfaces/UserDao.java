@@ -12,6 +12,7 @@ public interface UserDao {
     boolean usernameExists(String username);
     long count();
     List<User> getUsersExcept(int id);
+    List<User> getUsers(int limit, int page);
     boolean addUser(User user);
     boolean updateUser(User user);
     boolean deleteUser(User user, String myUsername);
