@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Table(name="chessclub_users")
 @NamedQueries({
         @NamedQuery(name="User.FindById", query="SELECT u FROM User u WHERE u.id = :id"),
+        @NamedQuery(name="User.FindAll", query="SELECT u FROM User u"),
         @NamedQuery(name="User.FindByUsername", query="SELECT u FROM User u WHERE u.username = :username"),
         @NamedQuery(name="User.FindAllExcept", query="SELECT u FROM User u WHERE u.id <> :id"),
         @NamedQuery(name="User.Count", query="SELECT COUNT(u) AS count FROM User u")
