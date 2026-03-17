@@ -74,7 +74,7 @@
             Game latestGame = userDao.getLatestGame(user); %>
            <tr>
                <td><%= user.getDisplayId() %></td>
-               <td><% if(user.CFCID != null) { %> <a href="https://chess.ca/en/ratings/p/?id=<%= user.CFCID %>" target="_blank"> <%= user.CFCID %></a><% } else { %>"Not Registered" <% } %></td>
+               <td><% if(user.CFCID != null) { %> <a href="https://chess.ca/en/ratings/p/?id=<%= user.CFCID %>" target="_blank"> <%= user.CFCID %></a><% } else { %> Not Registered <% } %></td>
                <td><% if(user.FIDEID != null) { %> <a href="https://ratings.fide.com/profile/<%= user.FIDEID %>" target="_blank"><%= user.FIDEID %></a> <% } else { %> Not Registered <% } %> </td>
                <td><%= user.lastName%>, <%= user.firstName %></td>
                <td><%= latestGame == null ? 1200 : latestGame.whitePlayer == user.id ? latestGame.whiteNewRating : latestGame.blackNewRating %></td>
