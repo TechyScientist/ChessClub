@@ -55,7 +55,7 @@
                <td><% if(user.FIDEID != null) { %> <a href="https://ratings.fide.com/profile/<%= user.FIDEID %>" target="_blank"><%= user.FIDEID %></a> <% } else { %> Not Registered <% } %> </td>
                <td><%= user.lastName%>, <%= user.firstName %></td>
                <td><%= user.rating %></td>
-               <td><%= user.gamesPlayed %></td>
+               <td><%= userDao.gamesPlayed(user) %></td>
                <td><%= user.effectiveDate.toLocalDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")) %></td>
                <td><%= user.isArbiter ? "Arb" : "" %> <%= user.isOrganizer ? "Org" : "" %> <%= user.isAdministrator ? "Admin" : "" %></td>
            </tr>
