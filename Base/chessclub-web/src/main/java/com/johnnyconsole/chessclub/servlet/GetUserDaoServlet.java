@@ -1,3 +1,5 @@
+package com.johnnyconsole.chessclub.servlet;
+
 import com.johnnyconsole.chessclub.persistence.interfaces.UserDao;
 
 import javax.ejb.EJB;
