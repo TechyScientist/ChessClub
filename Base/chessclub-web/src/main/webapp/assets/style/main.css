@@ -43,26 +43,24 @@ label {
     margin-right: 10px;
 }
 
-input:not([type="submit"]), select, textarea {
-    padding: 5px;
+input:not([type="submit"]), select {
+    padding: 10px;
+    background: var(--color-background);
     border-radius: 10px;
-    border: 1px solid black;
+    border: 2px solid black;
     outline: none;
     box-shadow: none;
 }
 
-input:not([type="submit"]):focus, textarea:focus {
-    border: 2px solid var(--color-primary);
-}
-
-input[type="text"], select {
-    margin-right: 10px;
+input:not([type="submit"]):focus {
+    border-color: var(--color-primary);
 }
 
 input[type="submit"] {
     display: block;
     width: 100%;
     background: var(--color-primary);
+    border-color: var(--color-primary);
     color: white;
     padding: 5px;
     border-radius: 10px;
