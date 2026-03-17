@@ -1,6 +1,7 @@
 package com.johnnyconsole.chessclub.persistence.implementations;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.johnnyconsole.chessclub.persistence.Game;
 import com.johnnyconsole.chessclub.persistence.User;
 import com.johnnyconsole.chessclub.persistence.interfaces.UserDao;
 
@@ -128,6 +129,29 @@ public class UserDaoImpl implements UserDao {
                     .verified;
         } catch(Exception e) {
             return false;
+        }
+    }
+
+    @Override
+    public List<Game> getGames(User user) {
+        try {
+            return  (List<Game>) (manager.createNamedQuery("User.FindGames")
+                    .setParameter("id", user.id)
+                    .getResultList());
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Game getLatestGame(User user) {
+        try {
+            return (Game) (manager.createNamedQuery("User.FindGames")
+                    .setParameter("id", user.id)
+                    .getResultList().get(0));
+        }
+        catch(Exception e) {
+            return null;
         }
     }
 

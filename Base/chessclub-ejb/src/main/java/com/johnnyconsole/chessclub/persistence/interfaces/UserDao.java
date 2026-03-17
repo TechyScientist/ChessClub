@@ -1,5 +1,6 @@
 package com.johnnyconsole.chessclub.persistence.interfaces;
 
+import com.johnnyconsole.chessclub.persistence.Game;
 import com.johnnyconsole.chessclub.persistence.User;
 
 import javax.ejb.Local;
@@ -18,4 +19,6 @@ public interface UserDao {
     boolean updateUser(User user);
     boolean deleteUser(User user, String myUsername);
     boolean verifyUserPassword(User user, String password);
+    List<Game> getGames(User user);
+    Game getLatestGame(User user);
 }
