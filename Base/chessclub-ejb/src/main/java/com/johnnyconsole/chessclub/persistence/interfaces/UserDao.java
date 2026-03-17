@@ -11,6 +11,7 @@ public interface UserDao {
     User getUser(String username);
     boolean usernameExists(String username);
     long count();
+    long gamesPlayed(User user);
     List<User> getUsersExcept(int id);
     List<User> getUsers(int limit, int page);
     boolean addUser(User user);

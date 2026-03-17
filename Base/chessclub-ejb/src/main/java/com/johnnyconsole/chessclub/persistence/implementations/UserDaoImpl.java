@@ -52,6 +52,17 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public long gamesPlayed(User user) {
+        try {
+            return (long) (manager.createNamedQuery("User.GamesPlayed")
+                    .setParameter("id", user.id)
+                    .getSingleResult());
+        } catch(Exception e) {
+            return 0;
+        }
+    }
+
+    @Override
     public List<User> getUsersExcept(int id) {
         try {
             return (List<User>)(manager.createNamedQuery("User.FindAllExcept")
