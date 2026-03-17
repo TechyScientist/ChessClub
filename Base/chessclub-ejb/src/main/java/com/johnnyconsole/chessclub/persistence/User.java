@@ -23,13 +23,12 @@ public class User {
     public int id;
     public String lastName, firstName, username, CFCID, FIDEID, chesscomUsername;
     @JsonbTransient private String password;
-    public Date effectiveDate;
     public boolean isArbiter, isOrganizer, isAdministrator;
 
     public User() {}
 
     public User(String lastName, String firstName, String username,
-                String password, String CFCID, String FIDEID, String chesscomUsername, Date effectiveDate,
+                String password, String CFCID, String FIDEID, String chesscomUsername,
                 boolean isArbiter, boolean isOrganizer, boolean isAdministrator) {
         this.lastName = lastName;
         this.firstName = firstName;
@@ -38,7 +37,6 @@ public class User {
         this.CFCID = CFCID;
         this.FIDEID = FIDEID;
         this.chesscomUsername = chesscomUsername;
-        this.effectiveDate = effectiveDate;
         this.isArbiter = isArbiter;
         this.isOrganizer = isOrganizer;
         this.isAdministrator = isAdministrator;
@@ -46,7 +44,7 @@ public class User {
 
     public User(String lastName, String firstName, String username, String password) {
         this(lastName, firstName, username, password, null, null, null,
-                Date.valueOf(LocalDate.now()), false, false, false);
+                false, false, false);
     }
 
     public String getDisplayId() {
@@ -74,7 +72,6 @@ public class User {
                 .append("\n\tCFCID: ").append(CFCID)
                 .append("\n\tFIDEID: ").append(FIDEID)
                 .append("\n\tchesscomUsername: ").append(chesscomUsername)
-                .append("\n\teffectiveDate: ").append(effectiveDate)
                 .append("\n\tisArbiter: ").append(isArbiter ? "Yes": "No")
                 .append("\n\tisOrganizer: ").append(isOrganizer ? "Yes": "No")
                 .append("\n\tisAdministrator: ").append(isAdministrator ? "Yes": "No")
