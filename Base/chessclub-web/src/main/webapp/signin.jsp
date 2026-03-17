@@ -28,10 +28,7 @@
 </style>
 
 <% int status = session.getAttribute("status") == null ? SC_OK : (int)session.getAttribute("status");
-if(status == SC_ACCEPTED) { %>
-    <p id="success"><strong>You have been signed out.</strong></p>
-<% }
-else if(status != SC_OK) { %>
+if(status != SC_OK) { %>
     <p id="error"><strong>Error</strong>:
         <% switch(status) {
                 case SC_BAD_REQUEST: %>
