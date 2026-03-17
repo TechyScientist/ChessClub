@@ -5,8 +5,8 @@
   <% if(signedInUser == null) { %>
         <a href="/chessclub/signin.jsp" <% if(pageName.equals("signin")) { %> id="current" <% } %>>Sign In</a>
  <% } else {
-         if(signedInUser.isArbiter) { %> <% } %>
-         if(signedInUser.isOrganizer) { %> <% } %>
+         if(signedInUser.isArbiter) { %> <% }
+         if(signedInUser.isOrganizer) { %> <% }
          if(signedInUser.isAdministrator) { %> <% } %>
   <a href="/chessclub/SignOutServlet">Sign Out</a>
   <% } %>
