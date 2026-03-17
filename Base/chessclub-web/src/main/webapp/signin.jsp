@@ -3,6 +3,12 @@
     String pageName = "signin",
             pageTitle = "Sign In";
 %>
+<%@ page import="static javax.servlet.http.HttpServletResponse.SC_OK" %>
+<%@ page import="static javax.servlet.http.HttpServletResponse.SC_BAD_REQUEST" %>
+<%@ page import="static javax.servlet.http.HttpServletResponse.SC_NOT_ACCEPTABLE" %>
+<%@ page import="static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED" %>
+<%@ page import="static javax.servlet.http.HttpServletResponse.SC_NOT_FOUND" %>
+
 <%@ include file="assets/include/header.jsp" %>
 
 <style>
@@ -20,17 +26,35 @@
     }
 </style>
 
+<% int status = session.getAttribute("status") == null ? SC_OK : (int)session.getAttribute("status");
+
+if(status != SC_OK) { %>
+    <p id="error"><strong>Error</strong>:
+        <% switch(status) {
+                case SC_BAD_REQUEST: %>
+                    That action must be done by the sign in form.
+        <%          break;
+                case SC_NOT_ACCEPTABLE: %>
+                    Missing or empty parameter.
+        <%          break;
+                case SC_NOT_FOUND:
+                case SC_UNAUTHORIZED: %>
+                    Invalid credentials, please try again.
+        <%          break;
+           } %>
+    </p>
+<% } %>
 <h3>Sign In</h3>
-<form action="" method="post">
+<form action="SignInServlet" method="post">
     <div class="form-field">
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" required/>
+        <input type="text" name="username" required/>
     </div>
     <div class="form-field">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" required/>
+        <input type="password" name="password" required/>
     </div>
-    <input type="submit" name="id-submit" id="signin-submit" value="Sign In"/>
+    <input type="submit" name="signin-submit" value="Sign In"/>
 </form>
 
 <%@ include file="assets/include/footer.jsp" %>
