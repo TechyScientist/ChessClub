@@ -14,6 +14,6 @@ public class SignOutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().removeAttribute("SignedInUser");
         request.getSession().setAttribute("status", HttpServletResponse.SC_ACCEPTED);
-        response.sendRedirect("/");
+        response.sendRedirect("/chessclub");
     }
 }
