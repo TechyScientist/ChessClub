@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="com.johnnyconsole.chessclub.persistence.interfaces.UserDao" %>
+<%@ page import="com.johnnyconsole.chessclub.persistence.Game" %>
 <%
     // Metadata strings for dynamic UI elements
     String pageName = "players",
@@ -68,14 +69,16 @@
             <th>Administrator</th>
         </tr>
 
-     <%   for(User user: users) { %>
+     <%   for(User user: users) {
+            List<Game> games = userDao.getGames(user);
+            Game latestGame = userDao.getLatestGame(user); %>
            <tr>
                <td><%= user.getDisplayId() %></td>
                <td><% if(user.CFCID != null) { %> <a href="https://chess.ca/en/ratings/p/?id=<%= user.CFCID %>" target="_blank"> <%= user.CFCID %></a><% } else { %>"Not Registered" <% } %></td>
                <td><% if(user.FIDEID != null) { %> <a href="https://ratings.fide.com/profile/<%= user.FIDEID %>" target="_blank"><%= user.FIDEID %></a> <% } else { %> Not Registered <% } %> </td>
                <td><%= user.lastName%>, <%= user.firstName %></td>
-               <td><%= user.rating %></td>
-               <td><%= userDao.gamesPlayed(user) %></td>
+               <td><%= latestGame == null ? 1200 : latestGame.whitePlayer == user.id ? latestGame.whiteNewRating : latestGame.blackNewRating %></td>
+               <td><%= games == null ? 0 : games.size() %></td>
                <td><%= user.effectiveDate.toLocalDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")) %></td>
                <td><img src="assets/img/<% if(user.isArbiter) { %>check<% } else { %>x<% } %>.png" alt="<% if(user.isArbiter) { %>User is an Arbiter<% } else { %>User is NOT an Arbiter<% } %>"/></td>
                <td><img src="assets/img/<% if(user.isOrganizer) { %>check<% } else { %>x<% } %>.png" alt="<% if(user.isOrganizer) { %>User is an Organizer<% } else { %>User is NOT an Organizer<% } %>"/></td>
