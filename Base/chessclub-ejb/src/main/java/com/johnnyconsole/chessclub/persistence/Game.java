@@ -1,7 +1,7 @@
 package com.johnnyconsole.chessclub.persistence;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 
 @Entity
@@ -14,14 +14,14 @@ public class Game {
     public int eventID, whitePlayer, whitePrevRating, whiteK, whiteNewRating,
             blackPlayer, blackPrevRating, blackK, blackNewRating;
     public double whiteE, blackE;
-    public Date datePlayed;
+    public Timestamp datePlayed;
     public String result;
 
     public Game() {}
 
     public Game(int eventID, int whitePlayer, int whitePrevRating, int whiteK, double whiteE, int whiteNewRating,
                 int blackPlayer, int blackPrevRating, int blackK, double blackE, int blackNewRating,
-                String result, Date datePlayed) {
+                String result, Timestamp datePlayed) {
         this.eventID = eventID;
         this.whitePlayer = whitePlayer;
         this.whitePrevRating = whitePrevRating;
@@ -42,7 +42,7 @@ public class Game {
     public String toString() {
         return new StringBuilder()
                 .append("Game {\n\tid: ").append(id)
-                .append("\n\tdatePlayed: ").append(datePlayed.toLocalDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")))
+                .append("\n\tdatePlayed: ").append(datePlayed.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd MMMM yyyy hh:mm:ss A")))
                 .append("\n\tresult: ").append(result)
                 .append("\n\twhitePlayer: ").append(whitePlayer)
                 .append("\n\twhitePrevRating: ").append(whitePrevRating)
