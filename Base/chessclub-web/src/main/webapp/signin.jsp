@@ -1,15 +1,9 @@
+<%@ page import="static javax.servlet.http.HttpServletResponse.*" %>
 <%
     // Metadata strings for dynamic UI elements
     String pageName = "signin",
             pageTitle = "Sign In";
 %>
-<%@ page import="static javax.servlet.http.HttpServletResponse.SC_OK" %>
-<%@ page import="static javax.servlet.http.HttpServletResponse.SC_BAD_REQUEST" %>
-<%@ page import="static javax.servlet.http.HttpServletResponse.SC_NOT_ACCEPTABLE" %>
-<%@ page import="static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED" %>
-<%@ page import="static javax.servlet.http.HttpServletResponse.SC_NOT_FOUND" %>
-<%@ page import="static javax.servlet.http.HttpServletResponse.SC_ACCEPTED" %>
-
 <%@ include file="assets/include/header.jsp" %>
 
 <style>

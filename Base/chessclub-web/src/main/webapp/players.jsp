@@ -1,10 +1,7 @@
 <%@ page import="com.johnnyconsole.chessclub.persistence.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="com.johnnyconsole.chessclub.persistence.interfaces.UserDao" %>
 <%@ page import="com.johnnyconsole.chessclub.persistence.Game" %>
-<%@ page import="java.sql.Timestamp" %>
-<%@ page import="java.time.Instant" %>
 <%@ page import="java.time.LocalDate" %>
 <%
     // Metadata strings for dynamic UI elements

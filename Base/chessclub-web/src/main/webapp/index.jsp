@@ -5,6 +5,7 @@
             pageTitle = null;
 %>
 <%@ include file="assets/include/header.jsp" %>
+
 <% if(signedInUser != null) {
     response.sendRedirect("dashboard.jsp");
 }
@@ -16,4 +17,5 @@ if(status == SC_ACCEPTED) { %>
     <p id="error"><strong>Error</strong>: You must be signed in to do that.</p>
 <% }
 session.removeAttribute("status"); %>
+
 <%@ include file="assets/include/footer.jsp" %>

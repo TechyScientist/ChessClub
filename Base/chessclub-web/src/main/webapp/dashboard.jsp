@@ -19,4 +19,5 @@ else {
     <h3>Signed in as: <%= signedInUser.lastName %>, <%= signedInUser.firstName %></h3>
 
 <% } %>
+
 <%@ include file="assets/include/footer.jsp" %>
