@@ -15,4 +15,8 @@
     response.sendRedirect("dashboard.jsp");
 } %>
 
+<h3>Game Management</h3>
+<a href="enter-results.jsp">Enter game results</a><br/><br/>
+<a href="edit-results.jsp">Edit the results of an existing game</a>
+
 <%@ include file="assets/include/footer.jsp" %>

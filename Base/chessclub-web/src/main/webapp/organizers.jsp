@@ -15,4 +15,8 @@
     response.sendRedirect("dashboard.jsp");
 } %>
 
+<h3>Event Management</h3>
+<a href="add-event.jsp">Create a new event</a><br/><br/>
+<a href="edit-event.jsp">Edit an existing event</a>
+
 <%@ include file="assets/include/footer.jsp" %>
