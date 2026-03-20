@@ -28,7 +28,7 @@ public class GetDaosServlet extends HttpServlet {
         request.getSession().setAttribute("UserDao", userDao);
         request.getSession().setAttribute("GameDao", gameDao);
         request.getSession().setAttribute("EventDao", eventDao);
-        response.sendRedirect(request.getHeader("Referer"));
+        response.sendRedirect(request.getHeader("Referer") == null ? "/chessclub" : request.getHeader("Referer"));
     }
 
 }
