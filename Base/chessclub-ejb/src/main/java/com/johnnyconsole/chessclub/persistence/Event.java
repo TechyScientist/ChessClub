@@ -6,6 +6,13 @@ import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name="chessclub_events")
+@NamedQueries({
+        @NamedQuery(name="Event.FindById", query="SELECT e FROM Event e WHERE e.id = :id"),
+        @NamedQuery(name="Event.FindAll", query="SELECT e FROM Event e"),@NamedQuery(name="Event.FindAll.Current", query="SELECT e FROM Event e WHERE e.startDate <= CURRENT_DATE AND e.endDate >= CURRENT_DATE ORDER BY e.startDate"),
+        @NamedQuery(name="Event.FindAll.Future", query="SELECT e FROM Event e WHERE e.startDate > CURRENT_DATE ORDER BY e.startDate"),
+        @NamedQuery(name="Event.FindAll.Past", query="SELECT e FROM Event e WHERE e.endDate < CURRENT_DATE ORDER BY e.endDate DESC"),
+        @NamedQuery(name="Event.Count", query="SELECT COUNT(e) AS count FROM Event e")
+})
 public class Event {
 
     @Id
