@@ -1,5 +1,6 @@
 package com.johnnyconsole.chessclub.servlet;
 
+import com.johnnyconsole.chessclub.persistence.interfaces.GameDao;
 import com.johnnyconsole.chessclub.persistence.interfaces.UserDao;
 
 import javax.ejb.EJB;
@@ -15,9 +16,13 @@ public class GetDaosServlet extends HttpServlet {
     @EJB
     private UserDao userDao;
 
+    @EJB
+    private GameDao gameDao;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().setAttribute("UserDao", userDao);
+        request.getSession().setAttribute("GameDao", gameDao);
         response.sendRedirect(request.getHeader("Referer"));
     }
 
