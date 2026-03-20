@@ -6,6 +6,16 @@ import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name="chessclub_games")
+@NamedQueries({
+        @NamedQuery(name="Game.FindById", query="SELECT g FROM Game g WHERE g.id = :id"),
+        @NamedQuery(name="Game.FindAll", query="SELECT g FROM Game g"),
+        @NamedQuery(name="Game.PlayedByUser.Chronological", query="SELECT g FROM Game g WHERE g.whitePlayer = :player OR g.blackPlayer = :player ORDER BY g.datePlayed"),
+        @NamedQuery(name="Game.PlayedByUser.ReverseChronological", query="SELECT g FROM Game g WHERE g.whitePlayer = :player OR g.blackPlayer = :player ORDER BY g.datePlayed DESC"),
+        @NamedQuery(name="Game.GamesForEvent", query="SELECT g FROM Game g WHERE g.eventID = :id"),
+        @NamedQuery(name="Game.Count.All", query="SELECT COUNT(g) as count FROM Game g"),
+        @NamedQuery(name="Game.Count.PlayedByUser", query="SELECT COUNT(g) as count FROM Game g WHERE g.whitePlayer = :player OR g.blackPlayer = :player"),
+        @NamedQuery(name="Game.Count.FromEvent", query="SELECT COUNT(g) AS count FROM Game g WHERE g.eventID = :id")
+})
 public class Game {
 
     @Id
