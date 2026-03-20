@@ -46,7 +46,7 @@
     int userCount = (int) userDao.count();
     int pageCount = userCount % 10 == 0 ? userCount / 10 : (userCount / 10) + 1;
     if(pageNumber < 1 || pageNumber > pageCount) pageNumber = 1;
-    List<User> users = userDao.getUsers(10, pageNumber); %>
+    List<User> users = userDao.all(10, pageNumber); %>
 
 
 <!-- TODO: Create custom up/down controls, create GO control, implement action -->
@@ -67,8 +67,8 @@
     </tr>
 
  <%   for(User user: users) {
-        List<Game> games = userDao.getGames(user);
-        Game latestGame = userDao.getLatestGame(user); %>
+        List<Game> games = gameDao.gamesFor(user);
+        Game latestGame = gameDao.latestGameFor(user); %>
        <tr>
            <td><a href="player.jsp?id=<%= user.id %>"><%= user.getDisplayId() %></a></td>
            <td><% if(user.CFCID != null) { %> <a href="https://chess.ca/en/ratings/p/?id=<%= user.CFCID %>" target="_blank"> <%= user.CFCID %></a><% } else { %> Not Registered <% } %></td>
