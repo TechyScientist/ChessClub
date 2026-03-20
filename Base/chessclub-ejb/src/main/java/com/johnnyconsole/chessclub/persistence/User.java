@@ -2,8 +2,6 @@ package com.johnnyconsole.chessclub.persistence;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
-import java.sql.Date;
-import java.time.LocalDate;
 
 @Entity
 @Table(name="chessclub_users")
@@ -13,8 +11,6 @@ import java.time.LocalDate;
         @NamedQuery(name="User.FindByUsername", query="SELECT u FROM User u WHERE u.username = :username"),
         @NamedQuery(name="User.FindAllExcept", query="SELECT u FROM User u WHERE u.id <> :id"),
         @NamedQuery(name="User.Count", query="SELECT COUNT(u) AS count FROM User u"),
-        @NamedQuery(name="User.GamesPlayed", query="SELECT COUNT(g.id) AS count FROM Game g WHERE g.whitePlayer = :id OR g.blackPlayer = :id"),
-        @NamedQuery(name="User.FindGames", query="SELECT g FROM Game g WHERE g.whitePlayer = :id OR g.blackPlayer = :id ORDER BY g.datePlayed DESC"),
 })
 public class User {
 

@@ -1,7 +1,6 @@
 package com.johnnyconsole.chessclub.persistence.implementations;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import com.johnnyconsole.chessclub.persistence.Game;
 import com.johnnyconsole.chessclub.persistence.User;
 import com.johnnyconsole.chessclub.persistence.interfaces.UserDao;
 
@@ -53,18 +52,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public long gamesPlayed(User user) {
-        try {
-            return (long) (manager.createNamedQuery("User.GamesPlayed")
-                    .setParameter("id", user.id)
-                    .getSingleResult());
-        } catch(Exception e) {
-            return 0;
-        }
-    }
-
-    @Override
-    public List<User> getUsersExcept(int id) {
+    public List<User> allExcept(int id) {
         try {
             return (List<User>)(manager.createNamedQuery("User.FindAllExcept")
                     .setParameter("id", id)
@@ -75,7 +63,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getUsers(int limit, int page) {
+    public List<User> all(int limit, int page) {
         try {
             return (List<User>) (manager.createNamedQuery("User.FindAll")
                     .setMaxResults(limit)
@@ -131,28 +119,4 @@ public class UserDaoImpl implements UserDao {
             return false;
         }
     }
-
-    @Override
-    public List<Game> getGames(User user) {
-        try {
-            return  (List<Game>) (manager.createNamedQuery("User.FindGames")
-                    .setParameter("id", user.id)
-                    .getResultList());
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    @Override
-    public Game getLatestGame(User user) {
-        try {
-            return (Game) (manager.createNamedQuery("User.FindGames")
-                    .setParameter("id", user.id)
-                    .getResultList().get(0));
-        }
-        catch(Exception e) {
-            return null;
-        }
-    }
-
 }
