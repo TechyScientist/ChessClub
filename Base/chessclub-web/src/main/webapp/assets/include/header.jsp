@@ -9,7 +9,7 @@
   <body>
     <% User signedInUser = (User) session.getAttribute("SignedInUser");
        UserDao userDao = (UserDao) session.getAttribute("UserDao");
-       GameDao gameDao = (GameDao) session.getAttribute("GameDao")
+       GameDao gameDao = (GameDao) session.getAttribute("GameDao");
        if(userDao == null || gameDao == null) response.sendRedirect("/chessclub/GetDaosServlet");%>
     <header>
       <h1>ChessClub Web<% if(pageTitle != null) { %>: <%= pageTitle %> <% } %></h1>
