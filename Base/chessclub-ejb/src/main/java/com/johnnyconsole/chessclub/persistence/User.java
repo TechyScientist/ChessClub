@@ -10,7 +10,9 @@ import javax.persistence.*;
         @NamedQuery(name="User.FindAll", query="SELECT u FROM User u"),
         @NamedQuery(name="User.FindByUsername", query="SELECT u FROM User u WHERE u.username = :username"),
         @NamedQuery(name="User.FindAllExcept", query="SELECT u FROM User u WHERE u.id <> :id"),
-        @NamedQuery(name="User.Count", query="SELECT COUNT(u) AS count FROM User u"),
+        @NamedQuery(name="User.FindAllArbiters", query="SELECT u FROM User u WHERE u.isArbiter = TRUE"),
+        @NamedQuery(name="User.FindAllOrganizers", query="SELECT u FROM User u WHERE u.isOrganizer = TRUE"),
+        @NamedQuery(name="User.Count", query="SELECT COUNT(u) AS count FROM User u")
 })
 public class User {
 
