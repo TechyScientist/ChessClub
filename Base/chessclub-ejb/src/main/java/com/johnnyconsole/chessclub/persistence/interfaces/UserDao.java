@@ -13,6 +13,8 @@ public interface UserDao {
     long count();
     List<User> allExcept(int id);
     List<User> all(int limit, int page);
+    List<User> arbiters();
+    List<User> organizers();
     boolean addUser(User user);
     boolean updateUser(User user);
     boolean deleteUser(User user, String myUsername);

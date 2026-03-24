@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
+@SuppressWarnings("unchecked")
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext(unitName="user")
@@ -71,6 +72,27 @@ public class UserDaoImpl implements UserDao {
                     .getResultList());
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<User> arbiters() {
+        try {
+            return (List<User>) manager.createNamedQuery("User.FindAllArbiters")
+                    .getResultList();
+        }
+        catch(Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<User> organizers() {
+        try {
+            return (List<User>) manager.createNamedQuery("User.FindAllOrganizers")
+                    .getResultList();
+        } catch(Exception e) {
             return null;
         }
     }
