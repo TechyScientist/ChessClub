@@ -16,7 +16,7 @@ public class EventDaoImpl implements EventDao {
 
 
     @Override
-    public Event getEvent(long id) {
+    public Event getEvent(int id) {
         try {
             return (Event) manager.createNamedQuery("Event.FindById")
                     .setParameter("id", id)

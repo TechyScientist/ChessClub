@@ -7,7 +7,7 @@ import java.util.List;
 
 @Local
 public interface EventDao {
-    Event getEvent(long id);
+    Event getEvent(int id);
     long count();
     boolean addEvent(Event event);
     boolean deleteEvent(Event event);
