@@ -20,7 +20,7 @@ public class Game {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    public int id;
+    public long id;
     public int eventID, whitePlayer, whitePrevRating, whiteK, whiteNewRating,
             blackPlayer, blackPrevRating, blackK, blackNewRating;
     public double whiteE, blackE;
