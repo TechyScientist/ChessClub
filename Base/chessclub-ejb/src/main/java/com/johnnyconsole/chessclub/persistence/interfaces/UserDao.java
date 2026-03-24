@@ -12,6 +12,7 @@ public interface UserDao {
     boolean usernameExists(String username);
     long count();
     List<User> allExcept(int id);
+    List<User> all();
     List<User> all(int limit, int page);
     List<User> arbiters();
     List<User> organizers();

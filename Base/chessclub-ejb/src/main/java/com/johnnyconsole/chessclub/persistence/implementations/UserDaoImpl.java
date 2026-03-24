@@ -64,6 +64,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List<User> all() {
+        try {
+            return (List<User>)(manager.createNamedQuery("User.FindAll").getResultList());
+        }
+        catch(Exception e) {
+            return null;
+        }
+    }
+
+    @Override
     public List<User> all(int limit, int page) {
         try {
             return (List<User>) (manager.createNamedQuery("User.FindAll")
