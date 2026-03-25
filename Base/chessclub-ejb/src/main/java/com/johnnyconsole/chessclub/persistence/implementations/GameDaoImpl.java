@@ -39,6 +39,17 @@ public class GameDaoImpl implements GameDao {
     }
 
     @Override
+    public int count(User user) {
+        try {
+            return (int) manager.createNamedQuery("Game.Count.PlayedByUser")
+                    .setParameter("player", user.id)
+                    .getSingleResult();
+        } catch(Exception e) {
+            return 0;
+        }
+    }
+
+    @Override
     public boolean addGame(Game game) {
         try {
             manager.persist(game);

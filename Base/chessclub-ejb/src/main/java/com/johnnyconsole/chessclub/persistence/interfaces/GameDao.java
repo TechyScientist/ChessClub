@@ -11,6 +11,7 @@ import java.util.List;
 public interface GameDao {
     Game getGame(long id);
     long count();
+    int count(User user);
     boolean addGame(Game game);
     boolean updateGame(Game game);
     boolean deleteGame(Game game);
