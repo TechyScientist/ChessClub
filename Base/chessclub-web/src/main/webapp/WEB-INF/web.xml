@@ -8,4 +8,12 @@
         <servlet-name>SignInServlet</servlet-name>
         <servlet-class>com.johnnyconsole.chessclub.servlet.SignInServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SignOutServlet</servlet-name>
+        <servlet-class>com.johnnyconsole.chessclub.servlet.SignOutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnterResultsServlet</servlet-name>
+        <servlet-class>com.johnnyconsole.chessclub.servlet.EnterResultsServlet</servlet-class>
+    </servlet>
 </web-app>
