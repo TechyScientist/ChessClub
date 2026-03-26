@@ -1,7 +1,7 @@
 package com.johnnyconsole.chessclub.persistence;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 
 @Entity
@@ -20,13 +20,13 @@ public class Event {
     public int id;
     public String name, formatString, playSystem;
     public Integer chiefOrganizer, chiefArbiter;
-    public Date startDate, endDate;
+    public Timestamp startDate, endDate;
 
 
     public Event() {}
 
     public Event(String name, String formatString, String playSystem,
-                 Integer chiefOrganizer, Integer chiefArbiter, Date startDate, Date endDate) {
+                 Integer chiefOrganizer, Integer chiefArbiter, Timestamp startDate, Timestamp endDate) {
         this.name = name;
         this.formatString = formatString;
         this.playSystem = playSystem;
@@ -36,14 +36,14 @@ public class Event {
         this.endDate = endDate;
     }
 
-    public Event(String name, String formatString, String playSystem, Date startDate, Date endDate) {
+    public Event(String name, String formatString, String playSystem, Timestamp startDate, Timestamp endDate) {
         this(name, formatString, playSystem, null, null,  startDate, endDate);
     }
 
     //TODO: Remove this method -- used only for testing
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy hh:mm:ss a");
         return new StringBuilder()
                 .append("Event {\n\tid: ").append(id)
                 .append("\n\tname: ").append(name)
@@ -51,8 +51,8 @@ public class Event {
                 .append("\n\tsystem: ").append(playSystem)
                 .append("\n\tchiefOrganizer: ").append(chiefOrganizer == null ? "--" : chiefOrganizer.toString())
                 .append("\n\tchiefArbiter: ").append(chiefArbiter ==  null ? "--" : chiefArbiter.toString())
-                .append("\n\tstart: ").append(startDate.toLocalDate().format(formatter))
-                .append("\n\tend: ").append(endDate.toLocalDate().format(formatter))
+                .append("\n\tstart: ").append(startDate.toLocalDateTime().format(formatter))
+                .append("\n\tend: ").append(endDate.toLocalDateTime().format(formatter))
                 .append("\n}").toString();
     }
 
