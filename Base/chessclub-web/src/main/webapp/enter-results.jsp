@@ -43,7 +43,15 @@
     }
 </style>
 
-<% if(request.getParameter("event") == null) {
+<% int responseCode = session.getAttribute("status") == null ? SC_OK : (int) session.getAttribute("status");
+    if(responseCode == SC_BAD_REQUEST) { %>
+         <p id="error"><strong>Error</strong>: That action must be done by the Enter Results form.</p>
+<% }  else if(responseCode == SC_CONFLICT) { %>
+        <p id="error"><strong>Error</strong>: Game Start Date is not within the event's play period or both players are the same.</p>
+<% } else if(responseCode == SC_CREATED) { %>
+        <p id="success"><strong>The results have been saved.</strong></p>
+<% }
+    if(request.getParameter("event") == null) {
     List<Event> events = eventDao.all();
     if(events == null || events.isEmpty()) { %>
         <p id="error"><strong>Error</strong>: No Events Found</p>
@@ -64,7 +72,7 @@
     Event event = eventDao.getEvent(Integer.parseInt(request.getParameter("event")));
     List<User> players = userDao.all(); %>
     <p>Event: <%= event.name %> (ID: <%= event.id %>)</p>
-    <form action="" method="POST">
+    <form action="EnterResultsServlet" method="POST">
         <input type="hidden" name="event" value="<%= event.id %>">
         <div class="form-field">
             <label for="start">Start Date/Time</label>
@@ -99,5 +107,6 @@
         </div>
         <input type="submit" name="enter-results-submit" value="Submit"/>
     </form>
-<% } %>
+<% }
+    session.removeAttribute("status");%>
 <%@ include file="assets/include/footer.jsp" %>
